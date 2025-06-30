@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42Mom - Communauté de soutien pour les mères étudiantes à 42</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            margin: 2rem auto;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .mission-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(240, 147, 251, 0.4);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .activity-category {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .activity-category:hover {
+            transform: scale(1.02);
+        }
+
+        .activity-category h3 {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-list li {
+            background: rgba(255, 255, 255, 0.7);
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .activity-list li::before {
+            content: '💜';
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .activity-list li:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .highlight-box h3 {
+            color: #d63031;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+            
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">42Mom</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>🤱 Bienvenue chez 42Mom</h1>
+            <p>Une association destinée aux mères étudiantes de l'école 42, visant à créer une communauté d'entraide et de soutien pour concilier vie familiale et études intensives.</p>
+        </section>
+
+        <section class="section">
+            <h2>🎯 Notre Mission</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <h3>🤝 Réseau de soutien</h3>
+                    <p>Créer des liens solides entre les mères étudiantes pour s'entraider au quotidien</p>
+                </div>
+                <div class="mission-card">
+                    <h3>📚 Partage de ressources</h3>
+                    <p>Échanger astuces et conseils pour optimiser la gestion du temps</p>
+                </div>
+                <div class="mission-card">
+                    <h3>🎪 Événements adaptés</h3>
+                    <p>Organiser des activités compatibles avec les contraintes familiales</p>
+                </div>
+                <div class="mission-card">
+                    <h3>💻 Apprentissage facilité</h3>
+                    <p>Proposer des ateliers techniques spécifiques à nos besoins</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🌟 Nos Activités</h2>
+            <div class="activities-grid">
+                <div class="activity-category">
+                    <h3><span class="emoji">🛠️</span>Ateliers Pratiques</h3>
+                    <ul class="activity-list">
+                        <li>Batch cooking pour mamans pressées</li>
+                        <li>Gestion du temps et organisation familiale</li>
+                        <li>Apprendre à coder avec les enfants</li>
+                        <li>Auto-soin et charge mentale</li>
+                        <li>Ateliers recherche de stage et d'emploi</li>
+                    </ul>
+                </div>
+
+                <div class="activity-category">
+                    <h3><span class="emoji">💬</span>Moments d'Échange</h3>
+                    <ul class="activity-list">
+                        <li>Cercle de parole mensuel</li>
+                        <li>Reboot Mom : petit-déjeuner mensuel</li>
+                        <li>Groupe Discord privé pour l'entraide</li>
+                        <li>Partage d'expériences et de conseils</li>
+                    </ul>
+                </div>
+
+                <div class="activity-category">
+                    <h3><span class="emoji">👩‍💻</span>Ateliers Tech Adaptés</h3>
+                    <ul class="activity-list">
+                        <li>Sessions de pair programming compatibles</li>
+                        <li>Live coding avec baby corner</li>
+                        <li>Horaires adaptés aux contraintes familiales</li>
+                        <li>Support technique personnalisé</li>
+                    </ul>
+                </div>
+
+                <div class="activity-category">
+                    <h3><span class="emoji">👨‍👩‍👧‍👦</span>Événements Familiaux</h3>
+                    <ul class="activity-list">
+                        <li>Pique-nique 42 Family le dimanche</li>
+                        <li>Ateliers informatique pour enfants</li>
+                        <li>Calendrier de l'avent collaboratif</li>
+                        <li>Activités créatives en famille</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>💡 Projets à Venir</h2>
+            <div class="highlight-box">
+                <h3>📖 Guide de Survie 42 Mom</h3>
+                <p>Un guide complet avec conseils, ressources, routines et astuces pour naviguer sereinement dans le cursus 42 en tant que maman.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>👥 Système de Parrainage</h3>
+                <p>Mise en place d'un accompagnement entre mamans : les plus avancées guident et soutiennent les nouvelles arrivantes.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🎯 Vision à Long Terme</h3>
+                <p>Développer des stratégies et solutions adaptées aux problématiques des mamans étudiantes de 42Paris, pour ainsi faciliter leur cursus, mener à bien leurs projets et mieux les préparer à l'insertion professionnelle.</p>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>🚀 Rejoignez-nous !</h2>
+            <p>Vous êtes maman ou future maman à 42 ? Rejoignez notre communauté bienveillante et construisons ensemble un environnement d'apprentissage adapté à nos besoins !</p>
+            <a href="#contact" class="cta-button">Nous Rejoindre</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 42Mom - Communauté de soutien pour les mères étudiantes à 42</p>
+            <p>💜 Ensemble, nous sommes plus fortes 💜</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .cta-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Add hover effects to mission cards
+        document.querySelectorAll('.mission-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
